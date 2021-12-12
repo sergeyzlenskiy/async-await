@@ -1,5 +1,10 @@
 import GameSavingLoader from './gameSavingLoader';
 
-GameSavingLoader.load().then((result) => {
-  localStorage.setItem('GameSaving', result);
-}, (error) => { throw new Error(error); });
+(async () => {
+  try {
+    const result = await GameSavingLoader.load();
+    localStorage.setItem('GameSaving', result);
+  } catch (error) {
+    throw new Error(error);
+  }
+})();
